@@ -26,8 +26,9 @@ public class BookSearchServlet extends HttpServlet {
 		*/
 		
 		BookFinder bf = new BookFinder();
-		List<String> books = bf.getBooks(request.getParameter("genre"));
+		List<String> booksResult = bf.getBooks(request.getParameter("genre"));
 		
+		/*
 		// test code v2
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
@@ -36,6 +37,11 @@ public class BookSearchServlet extends HttpServlet {
 		for (String book : books) {
 			out.print("<br>try: " + book);
 		}
+		*/
+		
+		request.setAttribute("books", booksResult);
+		RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+		view.forward(request, response);
 				
 	}
 
