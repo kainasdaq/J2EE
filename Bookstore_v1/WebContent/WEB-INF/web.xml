@@ -12,11 +12,20 @@
   </welcome-file-list>
 
 	<servlet>
-		<servlet-name>BookSearchServlet</servlet-name>
+		<servlet-name>BookSearch</servlet-name>
 		<servlet-class>edu.neu.dengkai.servlet.BookSearchServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>BookSearchServlet</servlet-name>
+		<servlet-name>BookSearch</servlet-name>
 		<url-pattern>/SearchBook.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Download</servlet-name>
+		<servlet-class>edu.neu.dengkai.servlet.DownloadServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Download</servlet-name>
+		<url-pattern>/Download.do</url-pattern>
 	</servlet-mapping>
 </web-app>
