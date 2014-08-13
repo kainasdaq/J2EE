@@ -41,6 +41,13 @@ public class BookSearchServlet extends HttpServlet {
 		}
 		*/
 		
+		HttpSession session = request.getSession();
+		synchronized(session) { // keep session attribute thread-safe
+			session.setAttribute("books", booksResult);
+			session.setAttribute("email", email);
+		}
+		
+		// only request attributes and local variables are thread-safe
 		request.setAttribute("books", booksResult);
 		request.setAttribute("email", email);
 		

@@ -15,11 +15,14 @@ public class MyServletContextServlet extends HttpServlet {
 	
 	public void doGet (HttpServletRequest request, HttpServletResponse response) 
 			throws IOException, ServletException {
-			ContextParamHandler cph = (ContextParamHandler) getServletContext().getAttribute("contextParamHandler");
-			
-			request.setAttribute("contextParam", cph.getParam());
-			RequestDispatcher view = request.getRequestDispatcher("contextParamResult.jsp");
-			view.forward(request, response);
+		
+			synchronized(getServletContext()) {
+				ContextParamHandler cph = (ContextParamHandler) getServletContext().getAttribute("contextParamHandler");
+				request.setAttribute("contextParam", cph.getParam());
+				RequestDispatcher view = request.getRequestDispatcher("contextParamResult.jsp");
+				view.forward(request, response);
+			}
+
 	}
 	
 
