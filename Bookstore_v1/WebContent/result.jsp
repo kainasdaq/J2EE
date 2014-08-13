@@ -17,5 +17,8 @@
 			}
 		%>
 	</p>
+	<% 
+		out.print("<br>Admin email: " + request.getAttribute("email"));
+	%>
 </body>
 </html>

@@ -28,18 +28,22 @@ public class BookSearchServlet extends HttpServlet {
 		BookFinder bf = new BookFinder();
 		List<String> booksResult = bf.getBooks(request.getParameter("genre"));
 		
+		String email = getServletContext().getInitParameter("adminEmail");
+		
 		/*
 		// test code v2
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("Book Selection Advice<br>");
 		
-		for (String book : books) {
+		for (String book : booksResult) {
 			out.print("<br>try: " + book);
 		}
 		*/
 		
 		request.setAttribute("books", booksResult);
+		request.setAttribute("email", email);
+		
 		RequestDispatcher view = request.getRequestDispatcher("result.jsp");
 		view.forward(request, response);
 				
