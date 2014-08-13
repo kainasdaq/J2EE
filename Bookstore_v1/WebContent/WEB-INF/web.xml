@@ -3,6 +3,7 @@
 	xmlns="http://java.sun.com/xml/ns/javaee"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
+	
 	<display-name>Bookstore_v1</display-name>
 	
 	<welcome-file-list>
@@ -19,6 +20,23 @@
 		<param-name>adminEmail</param-name>
 		<param-value>kyo6728@gmail.com</param-value>
 	</context-param>
+
+	<listener>
+		<listener-class>edu.neu.dengkai.servlet.MyServletContextListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>ContextParam</param-name>
+		<param-value>Got ContextParameter successfully</param-value>
+	</context-param>
+	
+	<servlet>
+		<servlet-name>ListenerTest</servlet-name>
+		<servlet-class>edu.neu.dengkai.servlet.MyServletContextServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ListenerTest</servlet-name>
+		<url-pattern>/ListenTest.do</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>BookSearch</servlet-name>
